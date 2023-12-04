@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,22 +9,27 @@ public class Main {
 
         // Dataset Preparation
         final String folderPath = "Datasets/";
-        String[] types = { "kecil_", "sedang_", "besar_" };
-        int[] sizes = { 100, 1000, 10000 };
+        int[] sizes = {2, 100, 1000, 10000};
 
-        for (String type : types) {
-            String filename = type + ".txt";
+        for (int size : sizes) {
+            String filename = "data_" + size + ".txt";
             System.out.println("Processing file: " + filename);
 
             try {
-                int[] array = DatasetReader.read(folderPath + filename);
+                int[] data = DatasetReader.read(folderPath + filename);
+
+                // Accessing the values
+                int W = data[0];
+                int[] val = Arrays.copyOfRange(data, 1, 1 + (data.length - 1) / 2);
+                int[] wt = Arrays.copyOfRange(data, 1 + (data.length - 1) / 2, data.length);
 
                 // Dataset Analysis
                 System.out.println("Analyzing: " + filename);
                 System.out.println("---------------------------------------");
-                DPUnboundedKnapsack.maxValue(array, sizes, 0); // todo
+                int maxValue = DPUnboundedKnapsack.maxValue(val, wt, W);
+                System.out.println("Max value: " + maxValue);
                 System.out.println(" ");
-                // BnBUnboundedKnapsack.maxValue(array, sizes, 0); // todo
+                // BnBUnboundedKnapsack.maxValue(W, wt.toArray(new Integer[0]), val.toArray(new Integer[0]), sizes, 0); // todo
                 // System.out.println("---------------------------------------");
 
             } catch (IOException e) {
@@ -33,6 +39,5 @@ public class Main {
             System.out.println(" ");
             System.out.println(" ");
         }
-
     }
 }
