@@ -26,8 +26,7 @@ public class Main {
                 // Dataset Analysis
                 System.out.println("Analyzing: " + filename);
                 System.out.println("---------------------------------------");
-                int maxValue = DPUnboundedKnapsack.maxValue(val, wt, W);
-                System.out.println("Max value: " + maxValue);
+                AlgorithmAnalysis.analyze(W, val, wt, DPUnboundedKnapsack);
                 System.out.println(" ");
                 // BnBUnboundedKnapsack.maxValue(W, wt.toArray(new Integer[0]), val.toArray(new Integer[0]), sizes, 0); // todo
                 // System.out.println("---------------------------------------");

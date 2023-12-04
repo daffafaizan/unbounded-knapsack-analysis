@@ -3,6 +3,11 @@
 public class DPUnboundedKnapsack implements Algorithms {
 
     @Override
+    public String name() {
+        return "Dynamic Programming";
+    }
+
+    @Override
     public int maxValue(int[] val, int[] wt, int W) {
         int n = val.length;
         int[] dp = new int[W + 1];
