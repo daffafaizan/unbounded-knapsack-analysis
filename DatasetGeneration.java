@@ -9,14 +9,16 @@ public class DatasetGeneration {
     static final String folderPath = "Datasets/";
 
     public static int[] generateData(int n) {
-        int W = 5 * n + random.nextInt(n) + 1;
         int[] val = new int[n];
         int[] wt = new int[n];
 
         for (int i = 0; i < n; i++) {
-            val[i] = random.nextInt(10 * n) + 1;
-            wt[i] = random.nextInt(2 * n) + 1;
+            val[i] = random.nextInt(10, 1000 + 1);
+            wt[i] = random.nextInt(10, 1000 + 1);
         }
+
+        int sum = Arrays.stream(wt).sum();
+        int W = (int) Math.floor(0.5 * sum);
 
         int[] data = new int[val.length + wt.length + 1];
         data[0] = W;

@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         // Algorithm Initialization
         Algorithms DPUnboundedKnapsack = new DPUnboundedKnapsack();
-        // Algorithms BnBUnboundedKnapsack = new BnBUnboundedKnapsack(); // todo
+        Algorithms BnBUnboundedKnapsack = new BnBUnboundedKnapsack(); // todo
 
         // Dataset Preparation
         final String folderPath = "Datasets/";
@@ -28,8 +28,8 @@ public class Main {
                 System.out.println("---------------------------------------");
                 AlgorithmAnalysis.analyze(W, val, wt, DPUnboundedKnapsack);
                 System.out.println(" ");
-                // BnBUnboundedKnapsack.maxValue(W, wt.toArray(new Integer[0]), val.toArray(new Integer[0]), sizes, 0); // todo
-                // System.out.println("---------------------------------------");
+                AlgorithmAnalysis.analyze(W, val, wt, BnBUnboundedKnapsack);
+                System.out.println("---------------------------------------");
 
             } catch (IOException e) {
                 System.err.println("Error: Unable to access file: " + filename);

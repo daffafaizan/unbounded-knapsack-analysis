@@ -8,7 +8,7 @@ public class DPUnboundedKnapsack implements Algorithms {
     }
 
     @Override
-    public int maxValue(int[] val, int[] wt, int W) {
+    public int maxValue(int W, int[] val, int[] wt) {
         int n = val.length;
         int[] dp = new int[W + 1];
 
@@ -28,7 +28,7 @@ public class DPUnboundedKnapsack implements Algorithms {
         int[] itemValues = { 60, 100, 120 };
         int[] itemWeights = { 10, 20, 30 };
 
-        int maxValue = maxValue(itemValues, itemWeights, knapsackCapacity);
+        int maxValue = maxValue(knapsackCapacity, itemValues, itemWeights);
 
         System.out.println("Max value: " + maxValue);
     }
