@@ -1,6 +1,6 @@
 # Unbounded Knapsack Analysis
 
-Code implementation for the Unbounded Knapsack Analysis problem using Branch and Bound and Dynamic Programming
+Code implementation, memory usage analysis, and execution time analysis for the Unbounded Knapsack Analysis problem using Branch and Bound and Dynamic Programming
 
 ## Table of Contents
 
