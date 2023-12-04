@@ -1,7 +1,7 @@
 public class AlgorithmAnalysis {
 
     public static void analyze(int W, int[] val, int[] wt, Algorithms algorithm) {
-        System.out.println("Dataset sorted using " + algorithm.name());
+        System.out.println("Max value obtained using " + algorithm.name());
 
         System.gc(); 
         long startTime = System.nanoTime();
