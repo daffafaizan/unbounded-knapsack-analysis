@@ -5,11 +5,11 @@ public class Main {
     public static void main(String[] args) {
         // Algorithm Initialization
         Algorithms DPUnboundedKnapsack = new DPUnboundedKnapsack();
-        Algorithms BnBUnboundedKnapsack = new BnBUnboundedKnapsack(); // todo
+        Algorithms BnBUnboundedKnapsack = new BnBUnboundedKnapsack();
 
         // Dataset Preparation
         final String folderPath = "Datasets/";
-        int[] sizes = {2, 100, 1000, 10000};
+        int[] sizes = {100, 1000, 10000};
 
         for (int size : sizes) {
             String filename = "data_" + size + ".txt";
