@@ -62,20 +62,6 @@ public class BnBUnboundedKnapsack implements Algorithms {
     
         return result;
     }
-
-    private void bubbleSort(Integer[] arr, double[] ratios) {
-        int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (ratios[arr[j]] < ratios[arr[j + 1]]) {
-                    // Swap indices
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-            }
-        }
-    }
     
     public void sortItemsByRatio() {
         Integer[] indices = new Integer[this.n];
@@ -83,12 +69,7 @@ public class BnBUnboundedKnapsack implements Algorithms {
             indices[i] = i;
         }
     
-        double[] ratios = new double[this.n];
-        for (int i = 0; i < this.n; i++) {
-            ratios[i] = (double) this.val[i] / this.wt[i];
-        }
-    
-        bubbleSort(indices, ratios);
+        Arrays.sort(indices, (a, b) -> Double.compare((double) this.val[b] / this.wt[b], (double) this.val[a] / this.wt[a]));
     
         this.val = rearrangeArray(this.val, indices);
         this.wt = rearrangeArray(this.wt, indices);
@@ -333,7 +314,7 @@ public class BnBUnboundedKnapsack implements Algorithms {
         this.n = val.length;
 
         Object[] solution = branchAndBound();
-        int[] best_solution = (int[]) solution[0];
+        // int[] best_solution = (int[]) solution[0];
         int best_value = (int) solution[1];
 
         return best_value;
