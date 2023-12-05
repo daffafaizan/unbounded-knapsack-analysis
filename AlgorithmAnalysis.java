@@ -1,23 +1,37 @@
 public class AlgorithmAnalysis {
 
+    private static final int WARM_UP_RUNS = 5;
+    private static final int MEASUREMENT_RUNS = 10;
+
     public static void analyze(int W, int[] val, int[] wt, Algorithms algorithm) {
-        System.out.println("Max value obtained using " + algorithm.name());
+        // Warm-up phase
+        for (int i = 0; i < WARM_UP_RUNS; i++) {
+            algorithm.maxValue(W, val, wt);
+        }
 
-        System.gc(); 
-        long startTime = System.nanoTime();
-        long startMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        // Measurement phase
+        long totalExecutionTime = 0;
+        long totalMemoryUsage = 0;
 
-        int maxValue = algorithm.maxValue(W, val, wt);
+        for (int i = 0; i < MEASUREMENT_RUNS; i++) {
+            System.gc();
+            long startTime = System.nanoTime();
+            long startMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 
-        long endTime = System.nanoTime();
-        long endMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+            algorithm.maxValue(W, val, wt);
 
-        long executionTime = endTime - startTime;
-        long memoryUsage = endMemory - startMemory;
+            long endTime = System.nanoTime();
+            long endMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 
-        System.out.println("Execution time: " + executionTime / (double) 1000000 + " ms");
-        System.out.println("Memory usage: " + memoryUsage / 1024 + " KB");
-        System.out.println("Max value: " + maxValue);
+            totalExecutionTime += (endTime - startTime);
+            totalMemoryUsage += (endMemory - startMemory);
+        }
+
+        long avgExecutionTime = totalExecutionTime / MEASUREMENT_RUNS;
+        long avgMemoryUsage = totalMemoryUsage / MEASUREMENT_RUNS;
+
+        System.out.println("Average execution time: " + avgExecutionTime / (double) 1000000 + " ms");
+        System.out.println("Average memory usage: " + avgMemoryUsage / 1024 + " KB");
     }
 
     public static void main(String[] args) {

@@ -26,9 +26,19 @@ public class Main {
                 // Dataset Analysis
                 System.out.println("Analyzing: " + filename);
                 System.out.println("---------------------------------------");
+
+                // Dynamic Programming
+                System.out.println("Max value obtained using " + DPUnboundedKnapsack.name());
+                System.out.println("Max value: " + DPUnboundedKnapsack.maxValue(W, val, wt));
                 AlgorithmAnalysis.analyze(W, val, wt, DPUnboundedKnapsack);
+
                 System.out.println(" ");
+
+                // Branch and Bound
+                System.out.println("Max value obtained using " + BnBUnboundedKnapsack.name());
+                System.out.println("Max value: " + BnBUnboundedKnapsack.maxValue(W, val, wt));
                 AlgorithmAnalysis.analyze(W, val, wt, BnBUnboundedKnapsack);
+
                 System.out.println("---------------------------------------");
 
             } catch (IOException e) {
